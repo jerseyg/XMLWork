@@ -20,8 +20,9 @@ body {
 
 #sidebar{
 	float: left;
-	margin: 5px;
+	margin-left: -35px;
 	width: 125px;
+	margin-top: -14px;
 }
 
 #sidebar li{
