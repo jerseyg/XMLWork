@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/css" href="XMLJerseyGalapon.css"?>
+<human_resources>
+	<employees>
+		<employee employee_id="42">
+			<first_name>Alan</first_name>
+			<last_name>Simpson</last_name>
+			<job_title>Instructor</job_title>
+			<department_id>34</department_id>
+			<email>asimpson@rrc.mb.ca</email>
+			<phone>204-949-8425</phone>
+			<notes>Due for a planning &amp; performance review</notes>
+		</employee>
+		<employee employee_id="150">
+			<first_name>John</first_name>
+			<last_name>Smith</last_name>
+			<job_title>Instructor</job_title>
+			<department_id>16</department_id>
+			<email>jsmith@rrc.mb.ca</email>
+			<phone>204-555-1333</phone>
+			<notes>Part-time employee</notes>
+		</employee>
+		<employee employee_id="23">
+			<first_name>Guy</first_name>
+			<last_name>Dugas</last_name>
+			<job_title>Department Chair</job_title>
+			<department_id>34</department_id>
+			<email>gdugas@rrc.mb.ca</email>
+			<phone>204-555-2131</phone>
+			<notes>Office in P414 Princess Campus</notes>
+		</employee>
+	</employees>
+	<departments>
+		<department department_id="34">
+			<name>Accounting &amp; Computer Education</name>
+			<manager_id>23</manager_id>
+			<notes>Princess Campus</notes>
+		</department>
+		<department department_id="12">
+			<name>Disctance Education</name>
+			<manager_id>99</manager_id>
+			<notes>Notre Dame Campus</notes>
+		</department>
+		<department department_id="16">
+			<name>Culinary Arts</name>
+			<manager_id>473</manager_id>
+			<notes>Notre Dame Campus</notes>
+		</department>
+	</departments>
+</human_resources>
