@@ -1,0 +1,91 @@
+<?xml version ="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>XHTML Javascript DOM Template - Assignment 03 DOM</title>
+	<script type="text/javascript">
+	// <![CDATA[
+
+	// A cross-browser "To String" helper for xml node objects.
+	function xmlToString(node) {
+		if (node.xml) { // Only IE supports this property.
+			return node.xml;
+		} else if (XMLSerializer) { // Firefox supports this.
+			var my_serializer = new XMLSerializer();
+			return my_serializer.serializeToString(node);
+		} else {
+			alert('Your browser does not support XML serialization.');
+			return "";
+		}
+	}
+
+	// This function is execute when this xhtml document loads. (Note the "onload" in the body tag.)
+	function loadXML(filename) {
+		var xmlDoc;
+		if (window.ActiveXObject) {
+			// If the ActiveXObject exists then we are using IE.
+			xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+		} else if (document.implementation && document.implementation.createDocument) {
+			// Mozilla, Firefox, Opera, etc. support document.implmentation.createDocument for loading XML files.
+			xmlDoc = document.implementation.createDocument("","",null);
+		} else {
+			alert('Your browser cannot handle the truth! XML loading not supported.');
+			return;
+		}
+
+		// No asynchronous load. (i.e. Do not allow execution of code to continue until xmlDoc.load is complete.)
+		xmlDoc.async=false;
+		xmlDoc.load(filename);
+		return xmlDoc;
+	}
+
+	function assignment_03_dom() {
+		var file = loadXML("CountryData.xml");
+		var file2 = loadXML("CanadaData.xml");
+		var output = document.getElementById("output");
+
+		alert(xmlToString(file));
+		alert(xmlToString(file2));
+
+		countryroot = file.documentElement;
+		comment = file.createComment("Population, life-expentancy and GDP data");
+		countryroot.insertBefore(comment,countryroot.firstChild);
+		before = file.getElementsByTagName("Angola")[0];
+
+		var canada = file.createElement("Canada");
+	
+
+		countryroot.insertBefore(canada, before);
+		output.innerHTML += 	"<br />New element &#60;Canada&#62; inserted.";
+		alert(xmlToString(file));
+
+		canadaroot = file2.documentElement;
+		var population = canadaroot.getElementsByTagName("population")[0];
+		var gdp = canadaroot.getElementsByTagName("GDP")[0];
+		var lifeExpectancy = canadaroot.getElementsByTagName("LifeExpectancy")[0];
+		var populationClone = population.cloneNode(true);
+		var gdpClone = gdp.cloneNode(true);
+		var lifeExpectancyClone = lifeExpectancy.cloneNode(true);
+		countryroot.getElementsByTagName("Canada")[0].appendChild(populationClone);
+		output.innerHTML += 	"<br />New element &#60;population&#62; inserted.";
+		countryroot.getElementsByTagName("Canada")[0].appendChild(gdpClone);
+		output.innerHTML += 	"<br />New element &#60;GDP&#62; inserted.";
+		countryroot.getElementsByTagName("Canada")[0].appendChild(lifeExpectancyClone);
+		output.innerHTML += 	"<br />New element &#60;LifeExpectancy&#62; inserted.";
+
+		alert(xmlToString(file));
+		console.dirxml(file);
+		// This function will be executed when you load this xhtml into a browser.
+	}
+	// ]]>
+	</script>
+</head>
+
+<body onload="assignment_03_dom()">
+	<div id="output">
+	</div>
+</body>
+</html>
+
+
+

@@ -1,0 +1,10 @@
+edsun (6:40 PM):
+for (var i = 0; i < canada_array.length; i++)
+		{
+			var cloned_temp = canadaDataXML.getElementsByTagName(canada_array[i])[0].cloneNode(true);
+			country_root.getElementsByTagName("Canada")[0].appendChild(cloned_temp);
+			document.getElementById("output").innerHTML += "<br />New element &#60;" + canada_array[i] + "&#62; inserted.";
+		}
+
+		.appendChild(populationClone);
+country_root.insertBefore(new_comment,country_root.firstChild);
